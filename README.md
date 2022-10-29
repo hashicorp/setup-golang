@@ -1,4 +1,4 @@
-# setup-golang
+# setup-golang (GitHub action)
 
 ![GitHub](https://img.shields.io/github/license/hashicorp/setup-golang)
 
@@ -6,7 +6,7 @@ A composite GitHub action for setting up Go compiler and module cache
 - configures Go compiler using `actions/setup-go`
 - configures Go modules cache using `actions/cache`
 - configures GOBIN environment variable to be on `$PATH`
-- compatible with Linux, Darwin, and Windows runners
+- compatible with `Linux`, `Darwin`, and `Windows` runners
 
 ## Inputs
 
@@ -27,16 +27,16 @@ is exceeded, older caches will be evicted on an LRU basis.
 
 #### minimal example
 
-This example uses the default values (i.e. uses `.go-version` for the Go version
-and `default` as the cache key.
+This example uses the default values (uses `.go-version` for the Go version
+and `default` as the cache key).
 
 ```yaml
 steps:
   - uses: hashicorp/setup-golang@v1
 ```
 
-This example uses custom values (i.e. uses `go.mod` for the Go version and
-`mykey` as the cache key.
+This example uses custom values (uses `go.mod` for the Go version and
+`mykey` as the cache key).
 
 #### complete example
 
