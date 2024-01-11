@@ -20,6 +20,7 @@ runs:
       uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491 # v5.0.0
       with:
         go-version-file: ${{inputs.version-file}}
+        cache-dependency-path: '**/*.sum'
     - name: Prepare Paths
       id: cache-paths
       shell: bash
@@ -31,11 +32,4 @@ runs:
         else
           echo "GOBIN=$(go env GOROOT)/bin" >> $GITHUB_ENV
         fi
-    - name: Setup Go Cache
-      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
-      with:
-        path: |
-          ${{steps.cache-paths.outputs.gocache}}
-          ${{steps.cache-paths.outputs.gomodcache}}
-        key: ${{runner.os}}-go-${{inputs.cache-key}}-${{hashFiles('**/go.sum')}}
-        restore-keys: ${{runner.os}}-go-${{inputs.cache-key}}-
+
